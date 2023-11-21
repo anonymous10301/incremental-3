@@ -9,10 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PlayerComponent implements OnInit {
 
-  playerdata [] = []
+  playerdata :any[] = []
 
   constructor(private ad : AdminService , private ar : ActivatedRoute , private r :Router) {
-    this.ad.getPlayers().get(data => (this.playerdata))
+    this.ad.getPlayers().subscribe(data =>(this.playerdata.push(...data)))
    }
 
   
