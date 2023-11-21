@@ -62,18 +62,23 @@ namespace dotnetapp.Controllers
         [Route("EditPlayer/{id}")]
         public IActionResult PutPlayer(int id, Player p)
         {
-            Player player=context.Players.Find(id);
-           
-                // player.Id=p.Id;
-                player.Name=p.Name;
-                player.Age=p.Age;
-                player.BiddingPrice=p.BiddingPrice;
-                player.Category=p.Category;
-                context.SaveChanges();
-               
-               
-           
-            return Ok();
+            try{
+
+                Player player=context.Players.Find(id);
+            
+                    // player.Id=p.Id;
+                    player.Name=p.Name;
+                    player.Age=p.Age;
+                    player.BiddingPrice=p.BiddingPrice;
+                    player.Category=p.Category;
+                    context.SaveChanges();
+                
+            
+                return Ok();
+            }
+        catch(Exception e){
+            return BadRequest(e.Message);
+        }
         }
         [HttpDelete]
         [Route("DeletePlayer/{id}")]
