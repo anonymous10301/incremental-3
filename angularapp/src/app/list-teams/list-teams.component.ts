@@ -1,6 +1,6 @@
 import { Component, IterableDiffers, OnInit } from '@angular/core';
 import { TeamServiceService } from '../services/team-service.service';
-import { ITeam } from '../model/iteam';
+import { ITeam } from '../models/iteam';
 
 @Component({
   selector: 'app-list-teams',

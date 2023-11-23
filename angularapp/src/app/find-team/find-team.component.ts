@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamServiceService } from '../services/team-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ITeam } from '../model/iteam';
-import { IPlayer } from '../model/iplayer';
+import { ITeam } from '../models/iteam';
+import { IPlayer } from '../models/iplayer';
 
 @Component({
   selector: 'app-find-team',

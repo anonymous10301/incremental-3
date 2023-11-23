@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IPlayer } from '../model/iplayer';
+import { IPlayer } from '../models/iplayer';
 import { TeamServiceService } from '../services/team-service.service';
 
 @Component({
