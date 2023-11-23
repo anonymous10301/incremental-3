@@ -1,0 +1,10 @@
+<ul>
+    <li *ngFor="let player of players">
+      {{ players.name }} - {{ players.age }} years - {{ players.category }} - {{ players.biddingPrice }}
+      <button (click)="editPlayer(players)">Edit</button>
+      <button (click)="deletePlayer(players)">Delete</button>
+    </li>
+  </ul>
+
+
+  

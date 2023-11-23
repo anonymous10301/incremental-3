@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IPlayer } from '../models/player';
+import { Player } from '../../models/player.model';
 import { TeamServiceService } from '../services/team-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,16 +9,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-player.component.css']
 })
 export class AddPlayerComponent implements OnInit {
-  playerdetail : IPlayer = {id : 0, teamid : 0, name : '', age : 0, category : '', biddingprice : 0}
+  playerdetail : Player = {id : 0, teamid : 0, name : '', age : 0, category : '', biddingprice : 0}
   showdata : any[] = []
 
   constructor(private ms : TeamServiceService, private router : Router, private ar : ActivatedRoute) { }
 
-  saveData(player : IPlayer) : void {
+  saveData(player : Player) : void {
     this.playerdetail = player
     this.ms.AddPlayer(this.playerdetail).subscribe(() => {
       alert("Detail Added")
-      this.router.navigate(['/listplayer'])
+      this.router.navigate(['/listteams'])
     }
     )
   }

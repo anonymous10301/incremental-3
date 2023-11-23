@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamServiceService } from '../services/team-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IPlayer } from '../models/player';
+import { Player } from 'src/models/player.model';
 
 @Component({
   selector: 'app-edit-player',
@@ -12,7 +12,7 @@ export class EditPlayerComponent implements OnInit {
 
   constructor(private ms : TeamServiceService, private ar : ActivatedRoute, private router : Router) { }
 
-  playerdetail : IPlayer = {id : 0, teamid : 0, name : '', age : 0, category : '', biddingprice : 0}
+  playerdetail : Player = {id : 0, teamid : 0, name : '', age : 0, category : '', biddingprice : 0}
   id : number
   showdata : any[] = []
 
@@ -24,12 +24,12 @@ export class EditPlayerComponent implements OnInit {
   }
 
   getPlayer(id : number) {
-    this.ms.getOnePlayer(id).subscribe((data : IPlayer) =>
+    this.ms.getOnePlayer(id).subscribe((data : Player) =>
       this.playerdetail = data
     )
   }
 
-  saveData(movie : IPlayer) : void {
+  saveData(movie : Player) : void {
     this.playerdetail = movie
     this.ms.EditPlayer(this.playerdetail).subscribe(() => {
       alert("Data Edited")

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IPlayer } from '../models/player';
+import { Player } from '../../models/player.model';
 import { TeamServiceService } from '../services/team-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class DeletePlayerComponent implements OnInit {
   constructor(private ms : TeamServiceService, private ar : ActivatedRoute, private router : Router) { }
 
   id : number
-  playerdetail : IPlayer = {id : 0, teamid : 0, name : '', age : 0, category : '', biddingprice : 0}
+  playerdetail : Player = {id : 0, teamid : 0, name : '', age : 0, category : '', biddingprice : 0}
 
   ngOnInit() {
     const tid = this.ar.snapshot.paramMap.get('id')
@@ -22,12 +22,12 @@ export class DeletePlayerComponent implements OnInit {
   }
 
   getPlayer(id : number) {
-    this.ms.getOnePlayer(id).subscribe((data : IPlayer) => 
+    this.ms.getOnePlayer(id).subscribe((data : Player) => 
       this.playerdetail = data
     )
   }
 
-  saveData(player : IPlayer) : void {
+  saveData(player : Player) : void {
     this.playerdetail = player
     this.ms.DeletePlayer(this.playerdetail).subscribe(() => {
       alert("Record Deleted")

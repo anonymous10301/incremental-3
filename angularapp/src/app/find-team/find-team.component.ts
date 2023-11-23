@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamServiceService } from '../services/team-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ITeam } from '../models/team';
-import { IPlayer } from '../models/player';
+import { Team } from 'src/models/team.model';
+import { Player } from 'src/models/player.model';
 
 @Component({
   selector: 'app-find-team',
@@ -12,9 +12,9 @@ import { IPlayer } from '../models/player';
 export class FindTeamComponent implements OnInit {
 
   id : number
-  teamdata : ITeam
+  teamdata : Team
   playerId : number
-  playerdata : IPlayer[] = []
+  playerdata : Player[] = []
 
   constructor(private ms : TeamServiceService, private ar : ActivatedRoute, private router : Router) { }
 
@@ -27,14 +27,14 @@ export class FindTeamComponent implements OnInit {
   }
 
   getTeam(id : number) {
-    this.ms.getTeam(id).subscribe((data : ITeam) => {
+    this.ms.getTeam(id).subscribe((data : Team) => {
       this.teamdata = data
       console.log(this.teamdata)
     })
   }
 
   getPlayer(id : number) {
-    this.ms.getPlayer(id).subscribe((data : IPlayer[]) => {
+    this.ms.getPlayer(id).subscribe((data : Player[]) => {
       this.playerdata = data
       console.log(this.playerdata)
     })

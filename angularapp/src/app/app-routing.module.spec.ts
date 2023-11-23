@@ -5,14 +5,14 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { Location } from "@angular/common";
-import { AdminComponent } from "../admin/admin.component";
-import { OrganizerComponent } from "../organizer/organizer.component";
-import { LoginComponent } from "./Login/login.component";
-import { RegistrationComponent } from "../registration/registration.component";
-import { ErrorComponent } from "../error/error.component";
+import { AdminComponent } from "./admin/admin.component";
+import { OrganizerComponent } from "./organizer/organizer.component";
+import { LoginComponent } from "./login/login.component";
+import { RegistrationComponent } from "./registration/registration.component";
+import { ErrorComponent } from "./error/error.component";
 // import { } from "./navbar/navbar.component";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { NavbarComponent } from "../navbar/navbar.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 describe("App Routing",() => {
     let router: Router;

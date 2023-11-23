@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ITeam } from '../models/team';
+import { Team } from '../../models/team.model';
 import { TeamServiceService } from '../services/team-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -10,12 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddTeamComponent implements OnInit {
 
-  teamdetail : ITeam = {teamId : 0, teamName : '', maxixmunBudget : 0}
+  teamdetail : Team = {id:0, name: '', maximumBudget : 0}
   showdata : any[] = []
 
   constructor(private ms : TeamServiceService, private router : Router, private ar : ActivatedRoute) { }
 
-  saveData(team : ITeam) : void {
+  saveData(team : Team) : void {
     this.teamdetail = team
     this.ms.AddTeam(this.teamdetail).subscribe(() => {
       alert("Detail Added")

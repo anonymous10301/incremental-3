@@ -1,0 +1,21 @@
+<form [formGroup]="registrationForm" (ngSubmit)="register()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" formControlName="username">
+    <div *ngIf="registrationForm.get('username').hasError('required') && registrationForm.get('username').touched">
+      Username is required.
+    </div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password">
+    <div *ngIf="registrationForm.get('password').hasError('required') && registrationForm.get('password').touched">
+      Password is required.
+    </div>
+    <div *ngIf="registrationForm.get('password').hasError('pattern') && registrationForm.get('password').touched">
+        weakpassword
+    </div>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" formControlName="confirmPassword">
+    <div *ngIf="registrationForm.get('confirmPassword').hasError('required') && registrationForm.get('confirmPassword').touched">
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  
