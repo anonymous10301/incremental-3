@@ -11,7 +11,7 @@ export class TeamServiceService {
 
   constructor(private httpclient : HttpClient) { }
 
-  private url = 'https://8080-ddbbededcbeabcdcfacbbecabcdadeafbbdcaeafe.premiumproject.examly.io/Admin'
+  private url = 'https://8080-ddbbededcbeabcdcfacbbecabcdadeafbbdcaeafe.premiumproject.examly.io/Admin' ;
 
 
   httpOptions = {headers : new HttpHeaders({'Content-type': 'application/json'})}

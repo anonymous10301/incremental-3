@@ -46,7 +46,7 @@ namespace dotnetapp.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BiddingAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    BiddingPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
