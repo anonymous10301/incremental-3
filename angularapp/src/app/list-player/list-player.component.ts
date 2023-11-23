@@ -9,11 +9,12 @@ import { TeamServiceService } from '../services/team-service.service';
 })
 export class ListPlayerComponent implements OnInit {
 
-  playerdata : Player[] = []
+  players : Player[] = []
+  newPlayer= { id: 1, name: 'Test Player', age: 25, category: 'Category A', biddingPrice: 100 }
 
   constructor(private ms : TeamServiceService) {
-      this.ms.getPlayers().subscribe(data => {this.playerdata.push(...data)})
-      console.log(this.playerdata)
+      this.ms.getPlayers().subscribe(data => {this.players.push(...data)})
+      console.log(this.players)
   }
   ngOnInit(): void {
   }

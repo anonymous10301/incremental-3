@@ -8,7 +8,7 @@
         <th>Player Name</th>
     </thead>
     <tbody>
-        <tr *ngFor="let m of playerdata">
+        <tr *ngFor="let m of players">
             <td>{{m.id}}</td>
             <td>{{m.name}}</td>
             <td><input type="button" [routerLink]="['/editplayer/',m.id]">Edit</td>
