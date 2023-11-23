@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamServiceService } from '../services/team-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ITeam } from '../models/iteam';
+import { ITeam } from '../models/team';
 
 @Component({
   selector: 'app-delete-team',

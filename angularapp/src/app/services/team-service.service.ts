@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ITeam } from '../models/iteam';
-import { IPlayer } from '../models/iplayer';
+import { ITeam } from '../models/team';
+import { IPlayer } from '../models/player';
 
 @Injectable({
   providedIn: 'root'
