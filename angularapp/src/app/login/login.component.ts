@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormsModule, Validators } from '@angular/forms';
- 
+import { AuthService } from '../services/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,18 +9,41 @@ import { FormGroup, FormsModule, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  username: string;
-  password: string;
+  username:string
+  password:string
+   
+    constructor(private router:Router,private authService:AuthService) {
+   
+   
+     }
+     showError:boolean=false
+   
+   
+   
+    ngOnInit(): void {
+    }
+    login(): void {
+      if(!this.username||!this.password)
+        {
+          this.showError=true;
+        }
+        else
+        {
+      this.authService.login(this.username, this.password).subscribe(
+       
+        (response) => {
+          if (response.role === 'ADMIN') {
+            this.router.navigate(['/admin']);
+          } else if (response.role === 'ORGANIZER') {
+            this.router.navigate(['/organizer']);
+          }
+          // Handle other roles or scenarios if needed
+        },
+        (error) => {
+          // Handle login error if needed
+        }
+      );
+    }
+    }
 
-  constructor(private authService: AuthService, private router: Router) {}
-  ngOnInit(): void {
-    
-  }
-
-  login() {
-    this.authService.login(this.username, this.password).subscribe(() => {
-      this.router.navigate(['/admin']);
-      this.router.navigate(['/organizer']);
-    });
-  }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Player } from '../../models/player.model';
+import { AdminService } from '../services/admin.service';
 
 @Component({
   selector: 'app-player',
@@ -6,27 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-  players: { id: number; name: string; age: number; category: string; biddingPrice: number; }[];
-
-  constructor() { }
+playerdata:any[]=[]
+player:Player={id:0,name:'',age:0,category:'',biddingPrice:0}
+players=[this.player]
+newPlayer:Player={id:0,name:'',age:0,category:'',biddingPrice:0}
+  constructor(private ms:AdminService) { 
+this.ms.getPlayers().subscribe(data=>{
+  this.playerdata.push(...data)
+})
+  }
 
   ngOnInit(): void {
-    // Initialize players data (you might fetch this from a service or API)
-    this.players = [
-      { id: 1, name: 'Player 1', age: 25, category: 'Category A', biddingPrice: 100 },
-      { id: 2, name: 'Player 2', age: 28, category: 'Category B', biddingPrice: 150 },
-     
-    ];
   }
 
-  newPlayer: any = {};
-
-  editPlayer(players?: any) {
-    alert(`Editing player: ${players.name}`);
-  }
-
-  deletePlayer(players?: any) {
-    
-    alert(`Deleting player: ${players.name}`);
-  }
 }

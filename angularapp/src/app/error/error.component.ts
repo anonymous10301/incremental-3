@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from 'src/models/player.model';
+
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',

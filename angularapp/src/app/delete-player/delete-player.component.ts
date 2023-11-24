@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from '../../models/player.model';
-import { TeamServiceService } from '../services/team-service.service';
+import { AdminService } from '../services/admin.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Player } from '../../models/player.model';
 
 @Component({
   selector: 'app-delete-player',
@@ -9,30 +9,27 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./delete-player.component.css']
 })
 export class DeletePlayerComponent implements OnInit {
+playerdata={id:0,name:'',age:0,category:'',biddingPrice:0,teamId:0}
+id:number
 
-  constructor(private ms : TeamServiceService, private ar : ActivatedRoute, private router : Router) { }
+  constructor(private ps:AdminService,private router:Router,private ar:ActivatedRoute) { 
 
-  id : number
-  playerdetail : Player = {id : 0, teamid : 0, name : '', age : 0, category : '', biddingprice : 0}
-
-  ngOnInit() {
-    const tid = this.ar.snapshot.paramMap.get('id')
-    this.id = Number(tid)
-    this.getPlayer(this.id)
+    const pid=this.ar.snapshot.paramMap.get('id')
+    this.id=Number(pid)
+   this.ps.getPlayerById(this.id).subscribe((data:any)=>{
+    this.playerdata=data
+   })
   }
-
-  getPlayer(id : number) {
-    this.ms.getOnePlayer(id).subscribe((data : Player) => 
-      this.playerdetail = data
-    )
-  }
-
-  saveData(player : Player) : void {
-    this.playerdetail = player
-    this.ms.DeletePlayer(this.playerdetail).subscribe(() => {
-      alert("Record Deleted")
-      this.router.navigate(['/listteams'])
+  deleteData(data:any):void
+  {
+    this.ps.deletePlayer(this.id).subscribe(()=>
+    {
+      alert('Player deleted!!')
+      this.router.navigate(['/listPlayer'])
     })
+  }
+
+  ngOnInit(): void {
   }
 
 }

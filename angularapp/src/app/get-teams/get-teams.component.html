@@ -1,0 +1,19 @@
+<div class="container jumbotron">
+    <table class="table table-striped">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of teams">
+            <td>{{team.id}}</td>
+            <td>{{team.name}}</td>
+            <!-- <td>{{team.maximumBudget}}</td> -->
+            <td>
+                <a [routerLink]="['/deleteTeam',team.id]">Delete</a>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

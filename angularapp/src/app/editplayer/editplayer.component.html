@@ -1,0 +1,29 @@
+<div class="container jumbotron">
+    <form (ngSubmit)="editPlayer(playerdata)" #editForm="ngForm">
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id" [(ngModel)]="playerdata.id" readonly #id="ngModel" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" [(ngModel)]="playerdata.name"  #name="ngModel" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="text" id="age" name="age" [(ngModel)]="playerdata.age"  #age="ngModel" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="teamId">Team ID</label>
+            <input type="text" id="teamId" name="teamId" [(ngModel)]="playerdata.teamId"  #teamId="ngModel" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" id="category" name="category" [(ngModel)]="playerdata.category"  #category="ngModel" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="biddingPrice">Bidding Price</label>
+            <input type="text" id="biddingPrice" name="biddingPrice" [(ngModel)]="playerdata.biddingPrice"  #biddingPrice="ngModel" class="form-control">
+        </div>
+        <input type="submit" class="btn btn-warning" value="Edit Player">
+        </form>
+</div>

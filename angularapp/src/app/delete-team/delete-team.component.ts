@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamServiceService } from '../services/team-service.service';
+import { AdminService } from '../services/admin.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Team } from '../../models/team.model';
 
 @Component({
   selector: 'app-delete-team',
@@ -9,30 +8,18 @@ import { Team } from '../../models/team.model';
   styleUrls: ['./delete-team.component.css']
 })
 export class DeleteTeamComponent implements OnInit {
-
-  constructor(private ms : TeamServiceService, private ar: ActivatedRoute, private router : Router) { }
-
-  id : number
-  teamdetail : Team = {id:0, name:'', maximumBudget : 0}
-
-  ngOnInit() {
-    const tid = this.ar.snapshot.paramMap.get('id')
-    this.id = Number(tid)
-    this.getTeam(this.id)
-  }
-
-  getTeam(id : number) {
-    this.ms.getTeam(id).subscribe((data : Team) => 
-      this.teamdetail = data
-    )
-  }
-
-  saveData(team : Team) : void {
-    this.teamdetail = team
-    this.ms.DeleteTeam(this.teamdetail).subscribe(() => {
-      alert("Record Deleted")
-      this.router.navigate(['/listteams'])
+id:number
+  constructor(private ts:AdminService,private ar:ActivatedRoute,private router:Router) { 
+    const pid=this.ar.snapshot.paramMap.get('id')
+    this.id=Number(pid)
+    this.ts.deleteTeam(this.id).subscribe(()=>
+    {
+      alert('Team Deleted!!')
+      router.navigate(['/listTeams'])
     })
+  }
+
+  ngOnInit(): void {
   }
 
 }
